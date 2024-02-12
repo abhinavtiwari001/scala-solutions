@@ -1,0 +1,19 @@
+import scala.collection.mutable._
+object Solution {
+    def threeSum(nums: Array[Int]): List[List[Int]] = {
+        
+        var result = List[List[Int]]()
+        val mapOfNums = Map[Int, Boolean]().withDefaultValue(false)
+        
+        for(left <- 0 until nums.length){    
+            for(right <- left+1 until nums.length){
+                if(mapOfNums(- nums(left) - nums(right)) && result.contains(List(- nums(left) - nums(right), nums(left), nums(right)).sorted) == false){ 
+                    result :+= List(- nums(left) - nums(right), nums(left), nums(right)).sorted
+                }
+            }
+            mapOfNums(nums(left)) = true
+            
+        }
+        result
+    }
+}
