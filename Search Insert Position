@@ -1,0 +1,12 @@
+object Solution {
+    def searchInsert(nums: Array[Int], target: Int): Int = {
+        if(nums(0) >= target) return 0
+        var (low, high) = (0, nums.length-1)
+        while(low < high){
+            val mid = (low+high+1)/2
+            if(nums(mid) < target) low = mid
+            else high = mid-1
+        }
+        low+1
+    }
+}
