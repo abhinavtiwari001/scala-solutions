@@ -1,0 +1,17 @@
+object Solution {
+    
+    
+    def myPow(x: Double, n: Int): Double = {
+        if(x == 0) return 0
+        if(n == 0) return 1
+        if(n == 1) return x
+        if(n == -1) return 1/x
+        
+        var result = 1.0
+        
+        if( (n&1) > 0) result *= x; 
+        var base =  x*x
+        var power = n/2
+        if(n > 0) result*myPow(base, power) else myPow(base, power)/result; 
+    }
+}
