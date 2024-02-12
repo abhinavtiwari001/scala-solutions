@@ -1,0 +1,11 @@
+import scala.collection.mutable._
+object Solution {
+    def containsNearbyDuplicate(nums: Array[Int], k: Int): Boolean = {
+        val lastOccurrence = Map[Int, Int]().withDefaultValue(-1) 
+        for(index <- 0 until nums.length){
+            if((lastOccurrence(nums(index)) != -1) && (index - lastOccurrence(nums(index)) <= k)) return true;
+            lastOccurrence(nums(index)) = index
+        }
+        false
+    }
+}
