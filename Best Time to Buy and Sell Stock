@@ -1,0 +1,10 @@
+object Solution {
+    def maxProfit(prices: Array[Int]): Int = {
+        var (currentCheapestStock, maximumProfit) = (prices(0), 0)
+        prices.foreach(price => {
+            maximumProfit = Math.max(maximumProfit, price - currentCheapestStock)
+            currentCheapestStock = Math.min(currentCheapestStock, price)
+        })
+        maximumProfit
+    }
+}
