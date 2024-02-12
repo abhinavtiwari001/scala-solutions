@@ -1,0 +1,14 @@
+object Solution {
+    def coinChange(coins: Array[Int], amount: Int): Int = {
+        val dp = Array.fill(amount+1)(-1)
+        dp(0) = 0
+        for(currentAmount <- 1 to amount){
+            for(coin <- coins){
+                if(currentAmount - coin >= 0 && dp(currentAmount - coin) != -1){
+                    dp(currentAmount) = if(dp(currentAmount) == -1) dp(currentAmount - coin)+1 else Math.min(dp(currentAmount - coin)+1, dp(currentAmount))   
+                }
+            }
+        }
+        dp(amount)
+    }
+}
