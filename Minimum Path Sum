@@ -1,0 +1,14 @@
+object Solution {
+    def minPathSum(grid: Array[Array[Int]]): Int = {
+        for(rowIndex <- 0 until grid.length; columnIndex <- 0 until grid(0).length){
+            val curResult =(rowIndex, columnIndex) match{
+               case (rowIndex, columnIndex) if(rowIndex>0 && columnIndex>0) => Math.min(grid(rowIndex-1)(columnIndex), grid(rowIndex)(columnIndex-1))
+               case (_, columnIndex) if(columnIndex>0) => grid(rowIndex)(columnIndex-1)
+               case (rowIndex, _) if(rowIndex>0) => grid(rowIndex-1)(columnIndex)
+               case (_, _) => 0
+           }
+            grid(rowIndex)(columnIndex) += curResult
+        } 
+        grid(grid.length-1)(grid(0).length-1)
+    }
+}
