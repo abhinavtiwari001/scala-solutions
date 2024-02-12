@@ -1,0 +1,5 @@
+object Solution {
+    def reverseWords(s: String): String = {
+        (s.trim.replaceAll("[' ']+", " ").reverse.split(" ").map(word =>  word.reverse)).toList.mkString(" ")
+    }
+}
